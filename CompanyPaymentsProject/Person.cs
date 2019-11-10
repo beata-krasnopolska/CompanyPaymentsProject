@@ -11,7 +11,7 @@ namespace CompanyPaymentsProject
         private int _personID;
         private string _name;
         private string _surname;
-        private int _payments;
+        private int _salary;
         Post post = new Post();
         
         public int PersonID
@@ -47,15 +47,15 @@ namespace CompanyPaymentsProject
                 _surname = value;
             }
         }
-        public int Payments
+        public int Salary
         {
             get
             {
-                return _payments;
+                return _salary;
             }
             set
             {
-                _payments = value;
+                _salary = value;
             }
         }
         //public string Post

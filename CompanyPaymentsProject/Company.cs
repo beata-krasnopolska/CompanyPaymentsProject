@@ -12,9 +12,9 @@ namespace CompanyPaymentsProject
         //lista osób i możliwość ich dodawania
         List<Person> people = new List<Person>()
         {
-            new Person { PersonID = 1, Name = "Jan", Surname = "Kowalski", Post.Assistant},
-            new Person { PersonID = 2, Name = "Anna", Surname = "Nowak", Post.Junior},
-            new Person { PersonID = 3, Name = "John", Surname = "Doe", Post.Manager},
+            new Person { PersonID = 1, Name = "Jan", Surname = "Kowalski", Post.Assistant, Salary = 2000},
+            new Person { PersonID = 2, Name = "Anna", Surname = "Nowak", Post.Junior, Salary = 3000},
+            new Person { PersonID = 3, Name = "John", Surname = "Doe", Post.Manager, Salary = 4000},
         };
         public void AddNewWorker()
         {

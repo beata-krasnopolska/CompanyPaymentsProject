@@ -17,7 +17,7 @@ namespace CompanyPaymentsProject
             Console.WriteLine("Please enter the worker ID number to find out the worker salary.");
             int userID = int.Parse(Console.ReadLine());
             
-            Company //jak uzyskać dostęp do List z Company??
+            Company. //jak uzyskać dostęp do List z Company??
 
             // możliwość dodawania pracowników
             

@@ -10,35 +10,52 @@ namespace CompanyPaymentsProject
     {
         
         //lista osób i możliwość ich dodawania
-        List<Person> people = new List<Person>()
+        private List<Person> _people = new List<Person>()
         {
             new Person { PersonID = 1, Name = "Jan", Surname = "Kowalski", Post.Assistant, Salary = 2000},
             new Person { PersonID = 2, Name = "Anna", Surname = "Nowak", Post.Junior, Salary = 3000},
             new Person { PersonID = 3, Name = "John", Surname = "Doe", Post.Manager, Salary = 4000},
         };
+
+        public List<Person> GetPersonList()
+        {
+            return _people;
+        }
+
+        public void ReturnSalary(int workerID)
+        {
+            for (int i = 0; i < _people.Count; i++)
+            {
+                if (PersonID == workerID)
+                {
+                    Console.WriteLine("Employee ID : {0} earns: {1}.", workerID, Salary);
+                }
+            }
+
+        }
         public void AddNewWorker()
         {
-            for (int i = people.Count; i < people.Count+1; i++)
+            for (int i = _people.Count; i < _people.Count+1; i++)
             {
-                people[i] = new Person();
-                Console.WriteLine("Enter worker #{0} name", i + 1 + people.Count);
-                people[i].Name = Console.ReadLine();
-                Console.WriteLine("Enter worker #{0} Surname", i + 1 + people.Count);
-                people[i].Surname =Console.ReadLine();
+                _people[i] = new Person();
+                Console.WriteLine("Enter worker #{0} name", i + 1 + _people.Count);
+                _people[i].Name = Console.ReadLine();
+                Console.WriteLine("Enter worker #{0} Surname", i + 1 + _people.Count);
+                _people[i].Surname =Console.ReadLine();
                 Console.WriteLine("Set the worker post in the company: 1. Manager, 2. Junior, 3. Assistant");
                 int workerPost = int.Parse(Console.ReadLine());
 
                 if (workerPost == 1)
                 {
-                    people[i].Post = Post[0];
+                    _people[i].Post = Post[0];
                 }
                 if(workerPost == 2)
                 {
-                    people[i].Post = Post[1];
+                    _people[i].Post = Post[1];
                 }
                 if(workerPost == 3)
                 {
-                    people[i].Post = Post[2];
+                    _people[i].Post = Post[2];
                 }
             }
         }

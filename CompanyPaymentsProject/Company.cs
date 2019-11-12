@@ -8,54 +8,48 @@ namespace CompanyPaymentsProject
 {
     class Company : Person
     {
-        
+        Paycheck paycheck = new Paycheck();
         //lista osób i możliwość ich dodawania
-        private List<Person> _people = new List<Person>()
-        {
-            new Person { PersonID = 1, Name = "Jan", Surname = "Kowalski", Post.Assistant, Salary = 2000},
-            new Person { PersonID = 2, Name = "Anna", Surname = "Nowak", Post.Junior, Salary = 3000},
-            new Person { PersonID = 3, Name = "John", Surname = "Doe", Post.Manager, Salary = 4000},
-        };
-
+        private List<Person> _persons = new List<Person>();
+       
         public List<Person> GetPersonList()
         {
-            return _people;
+            return _persons;
         }
 
-        public void ReturnSalary(int workerID)
-        {
-            for (int i = 0; i < _people.Count; i++)
-            {
-                if (PersonID == workerID)
-                {
-                    Console.WriteLine("Employee ID : {0} earns: {1}.", workerID, Salary);
-                }
-            }
+        public List<Paycheck> Paychecks = new List<Paycheck>();
 
-        }
-        public void AddNewWorker()
+        //Id pracownika jako parametr - dodaje dla niego jakąś wypłątę
+        public void AddPayCheck(int personId)
         {
-            for (int i = _people.Count; i < _people.Count+1; i++)
+            var person = _persons.Where(x => x.PersonID == personId);            
+            var salary = new SalaryCalculator().CalculateSalary(Post);
+            Paychecks.Add(new Paycheck { Salary = salary });
+        }
+
+        public void AddPerson(Person person)
+        {
+            for (int i = _persons.Count; i < _persons.Count+1; i++)
             {
-                _people[i] = new Person();
-                Console.WriteLine("Enter worker #{0} name", i + 1 + _people.Count);
-                _people[i].Name = Console.ReadLine();
-                Console.WriteLine("Enter worker #{0} Surname", i + 1 + _people.Count);
-                _people[i].Surname =Console.ReadLine();
+                _persons[i] = new Person();
+                Console.WriteLine("Enter worker #{0} first name:", i + 1 + _persons.Count);
+                _persons[i].Name = Console.ReadLine();
+                Console.WriteLine("Enter worker #{0} family name:", i + 1 + _persons.Count);
+                _persons[i].Surname =Console.ReadLine();
                 Console.WriteLine("Set the worker post in the company: 1. Manager, 2. Junior, 3. Assistant");
                 int workerPost = int.Parse(Console.ReadLine());
 
                 if (workerPost == 1)
                 {
-                    _people[i].Post = Post[0];
+                    _persons[i].Post = Post[0];
                 }
                 if(workerPost == 2)
                 {
-                    _people[i].Post = Post[1];
+                    _persons[i].Post = Post[1];
                 }
                 if(workerPost == 3)
                 {
-                    _people[i].Post = Post[2];
+                    _persons[i].Post = Post[2];
                 }
             }
         }

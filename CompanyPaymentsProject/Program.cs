@@ -17,19 +17,18 @@ namespace CompanyPaymentsProject
             Console.WriteLine("Please enter the worker ID number to find out the worker salary.");
             int userID = int.Parse(Console.ReadLine());
 
-            company.ReturnSalary(userID);
+            company.AddPayCheck(userID);
 
             // możliwość dodawania pracowników
-            
-            company.AddNewWorker();
+            company.AddPerson(new Person {PersonID = 1, Name = "Jan", Surname = "Kowalski", Post.Assistant });
+            company.AddPerson(new Person {PersonID = 2, Name = "Anna", Surname = "Nowak", Post.Junior,});
+            company.AddPerson(new Person { PersonID = 3, Name = "John", Surname = "Doe", Post.Manager });
 
-            // data obecne wypłaty
+            // data obecnej wypłaty
             Paycheck paycheck = new Paycheck();
             Paycheck.ReturnDate();
 
-            Console.WriteLine("Would you line to know the deductions of your salary please enter the salary");
-            int salary = int.Parse(Console.ReadLine());
-            paycheck.SalaryDeductions(salary);
+            
 
             Console.ReadKey();
         }

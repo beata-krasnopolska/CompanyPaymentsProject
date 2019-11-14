@@ -1,27 +1,27 @@
-﻿
+﻿using System;
+using System.Linq;
+
 namespace CompanyPaymentsProject
 {
     class SalaryCalculator
     {
-        public int Salary { get; set; }
-
         public decimal CalculateSalary(Post post)
         {
             switch (post)
             { 
                 case Post.Assistant:
-                    Salary = 200;
-                    break;
+                    return 200;
                 case Post.Junior:
-                    Salary = 300;
-                    break;
+                    return 300;
                 case Post.Manager:
-                    Salary = 400;
-                    break;
+                    return 400;
                 default:
-                    break;
+                    throw new Exception("Post doesn't exist");                    
             }
-            return Salary;
+        }
+        public decimal CalculateForOne(Person person)
+        {
+            return person.Paychecks.Sum(x => x.Salary);
         }
     }
 }

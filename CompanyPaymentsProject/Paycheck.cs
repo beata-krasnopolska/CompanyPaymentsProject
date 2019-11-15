@@ -12,6 +12,6 @@ namespace CompanyPaymentsProject
 
         public decimal Salary { get; set; }
 
-        public DateTime Date { get; set; }         
-    }
+        public DateTime Date { get; set; }       
+    }    
 }

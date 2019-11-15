@@ -16,6 +16,11 @@ namespace CompanyPaymentsProject
 
         public Post Post { get; set; }
 
-        public List<Paycheck> Paychecks { get; set; }                
+        public List<Paycheck> Paychecks { get; set; }
+
+        public Person()
+        {
+            Paychecks = new List<Paycheck>();
+        }
     }
 }

@@ -15,16 +15,17 @@ namespace CompanyPaymentsProject
             return _persons;
         }
 
-        public void AddPayCheck(int personId)
+        public void AddPayCheck(int personId, DateTime date)
         {
-            var person = _persons.Where(x => x.PersonID == personId);            
+            var person = _persons.SingleOrDefault(x => x.PersonID == personId);            
             var salary = new SalaryCalculator().CalculateSalary(person.Post);
-            person.Paychecks.Add(new Paycheck { Salary = salary });            
+            person.Paychecks.Add(new Paycheck { Salary = salary });
+            person.Paychecks.Add(new Paycheck { Date = date });
         }
 
         public Person GetPerson(int personId)
         {
-            return _persons.SingleOrDefault(x=>x.PersonID == personId);
+            return _persons.SingleOrDefault(x => x.PersonID == personId);
         }
 
         public void AddPerson(Person person)

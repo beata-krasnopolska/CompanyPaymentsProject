@@ -18,7 +18,7 @@ namespace CompanyPaymentsProject
             
             company.AddPayCheck(1, new DateTime(1998, 1, 1));
             company.AddPayCheck(1, new DateTime(1999, 1, 1));
-            company.AddPayCheck(3, new DateTime(1998, 1, 1));
+            company.AddPayCheck(3, new DateTime(2001, 1, 1));
             company.AddPayCheck(3, new DateTime(1999, 2, 2));
             company.AddPayCheck(3, new DateTime(2000, 1, 1));
             

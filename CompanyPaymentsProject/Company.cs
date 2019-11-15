@@ -19,8 +19,7 @@ namespace CompanyPaymentsProject
         {
             var person = _persons.SingleOrDefault(x => x.PersonID == personId);            
             var salary = new SalaryCalculator().CalculateSalary(person.Post);
-            person.Paychecks.Add(new Paycheck { Salary = salary });
-            person.Paychecks.Add(new Paycheck { Date = date });
+            person.Paychecks.Add(new Paycheck { Salary = salary, Date = date });
         }
 
         public Person GetPerson(int personId)

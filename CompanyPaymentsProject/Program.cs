@@ -25,7 +25,10 @@ namespace CompanyPaymentsProject
             Console.WriteLine("Please enter the employee ID number to find out the salary.");
             int userID = int.Parse(Console.ReadLine());
 
-            var employeeSalary = company.GetPerson(userID);
+            var salaryCalculator = new SalaryCalculator();
+
+            var employeeSalary = salaryCalculator.CalculateForOne(company.GetPerson(userID));
+
             Console.WriteLine("The employee ID: {0},    salary: {1}", userID, employeeSalary);
 
             Console.ReadKey();

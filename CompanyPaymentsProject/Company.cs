@@ -6,41 +6,30 @@ using System.Threading.Tasks;
 
 namespace CompanyPaymentsProject
 {
-    class Company : Person
+    class Company
     {
-        
-        //lista osób i możliwość ich dodawania
-        List<Person> people = new List<Person>()
+        private List<Person> _persons = new List<Person>();
+       
+        public List<Person> GetPersonList()
         {
-            new Person { PersonID = 1, Name = "Jan", Surname = "Kowalski", Post.Assistant},
-            new Person { PersonID = 2, Name = "Anna", Surname = "Nowak", Post.Junior},
-            new Person { PersonID = 3, Name = "John", Surname = "Doe", Post.Manager},
-        };
-        public void AddNewWorker()
-        {
-            for (int i = people.Count; i < people.Count+1; i++)
-            {
-                people[i] = new Person();
-                Console.WriteLine("Enter worker #{0} name", i + 1 + people.Count);
-                people[i].Name = Console.ReadLine();
-                Console.WriteLine("Enter worker #{0} Surname", i + 1 + people.Count);
-                people[i].Surname =Console.ReadLine();
-                Console.WriteLine("Set the worker post in the company: 1. Manager, 2. Junior, 3. Assistant");
-                int workerPost = int.Parse(Console.ReadLine());
+            return _persons;
+        }
 
-                if (workerPost == 1)
-                {
-                    people[i].Post = Post[0];
-                }
-                if(workerPost == 2)
-                {
-                    people[i].Post = Post[1];
-                }
-                if(workerPost == 3)
-                {
-                    people[i].Post = Post[2];
-                }
-            }
+        public void AddPayCheck(int personId, DateTime date)
+        {
+            var person = _persons.SingleOrDefault(x => x.PersonID == personId);            
+            var salary = new SalaryCalculator().CalculateSalary(person.Post);
+            person.Paychecks.Add(new Paycheck { Salary = salary, Date = date });
+        }
+
+        public Person GetPerson(int personId)
+        {
+            return _persons.SingleOrDefault(x => x.PersonID == personId);
+        }
+
+        public void AddPerson(Person person)
+        {
+            _persons.Add(person);
         }
     }
 }

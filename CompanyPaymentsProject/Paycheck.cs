@@ -8,16 +8,10 @@ namespace CompanyPaymentsProject
 {
     class Paycheck
     {
-        //data wypłaty i kwota
-        private DateTime paymentDate = new DateTime();        
+        public int PaycheckId { get; set; }
 
-        private int salary;
+        public decimal Salary { get; set; }
 
-
-        private int Soc_Sec;
-        private int Medcare;
-        private int netSalary;
-        private int grossSalary;
-
-    }
+        public DateTime Date { get; set; }       
+    }    
 }

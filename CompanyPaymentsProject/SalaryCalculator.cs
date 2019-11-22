@@ -23,5 +23,10 @@ namespace CompanyPaymentsProject
         {
             return person.Paychecks.Sum(x => x.Salary);
         }
+               
+        public decimal GetTimeSpanSalary(Company company, DateTime startDate, DateTime endDate, int personId)
+        {
+            return company.GetPerson(personId).Paychecks.Where(x => x.Date >= startDate && x.Date < endDate).Sum(x => x.Salary);
+        }
     }
 }

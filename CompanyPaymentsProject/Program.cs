@@ -27,9 +27,20 @@ namespace CompanyPaymentsProject
 
             var salaryCalculator = new SalaryCalculator();
 
+            //Returns current employee salary
+
             var employeeSalary = salaryCalculator.CalculateForOne(company.GetPerson(userID));
 
+            //Employee searcher returns a sum of salary form the time span
+
+            DateTime startDate = new DateTime(1991, 1, 1);
+            DateTime endDate = new DateTime(2000, 3, 3);
+
+            var timeSpanSalary = salaryCalculator.GetTimeSpanSalary(company, startDate, endDate, userID);
+
             Console.WriteLine("The employee ID: {0},    salary: {1}", userID, employeeSalary);
+            Console.WriteLine("The employee ID: {0},    time span: {1}  -  {2}    salary: {3}", userID, startDate,
+                                                                                                endDate, timeSpanSalary);
 
             Console.ReadKey();
         }
